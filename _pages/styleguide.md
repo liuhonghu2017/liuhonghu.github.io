@@ -4,38 +4,42 @@ title: 风格指南
 permalink: /styleguide/
 ---
 
-普通文本.
+### 1. 分割线
 
+{% highlight md %}
 ***
-
-### 默认标题
-
-# 默认标题
-## 默认标题
-### 默认标题
-#### 默认标题
-##### 默认标题
-###### 默认标题
-
-{% highlight markdown %}
-# 默认标题
-## 默认标题
-### 默认标题
-#### 默认标题
-##### 默认标题
-###### 默认标题
+或
+---
 {% endhighlight %}
 
 ***
 
-### 列表
+### 2. 标题
+### 默认标题(h3)
+# 一级标题(h1)
+## 二级标题(h2)
+### 三级标题(h3)
+#### 四级标题(h4)
+##### 五级标题(h5)
+###### 六级标题(h6)
 
+{% highlight markdown %}
+### 默认标题(h3)
+# 一级标题(h1)
+## 二级标题(h2)
+### 三级标题(h3)
+#### 四级标题(h4)
+##### 五级标题(h5)
+###### 六级标题(h6)
+{% endhighlight %}
+
+***
+
+### 3. 列表
 #### 有序列表
 
 1. 听君一席话
 2. 胜读十年书
-
-***
 
 #### 无序列表
 
@@ -52,13 +56,17 @@ permalink: /styleguide/
 
 ***
 
-### 引用
+### 4. 引用
 
 > 我宁愿犯错，也不愿什么都不做。 — 时间刺客 艾克
 
+{% highlight markdown %}
+> 我宁愿犯错，也不愿什么都不做。 — 时间刺客 艾克
+{% endhighlight %}
+
 ***
 
-### 语法高亮显示
+### 5. 语法高亮显示
 
 {% highlight js %}
   $('.top').click(function () {
@@ -68,9 +76,7 @@ permalink: /styleguide/
 
 ***
 
-### 视频
-
-<iframe src="https://www.youtube.com/" frameborder="0" allowfullscreen></iframe>
+### 6. 视频
 
 {% highlight html %}
   <iframe src="https://www.youtube.com/" frameborder="0" allowfullscreen></iframe>
@@ -78,7 +84,7 @@ permalink: /styleguide/
 
 ***
 
-### 图片
+### 7. 图片
 
 ![]({{site.baseurl}}/images/lang.jpg)
 
@@ -86,6 +92,10 @@ permalink: /styleguide/
   ![]({{site.baseurl}}/images/lang.jpg)
 {% endhighlight %}
 
-*结语*
-
 ***
+
+### 8. 结语
+*结语*
+{% highlight markdown %}
+  *结语* 或 _结语_
+{% endhighlight %}

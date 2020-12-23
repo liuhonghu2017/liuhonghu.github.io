@@ -1,0 +1,6 @@
+- name: 百度
+  path: baidu.com
+- name: 知乎
+  path: zhihu.com
+- name: 豆瓣
+  path: douban.com

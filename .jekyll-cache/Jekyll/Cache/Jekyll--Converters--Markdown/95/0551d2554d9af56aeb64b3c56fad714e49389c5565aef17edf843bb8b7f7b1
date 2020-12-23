@@ -1,0 +1,67 @@
+I"[<h3 id="1-a-标签">1. a 标签</h3>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="p">[</span><span class="nv">这里是百度</span><span class="p">][</span><span class="ss">link-a</span><span class="p">]</span>;</code></pre></figure>
+
+<ol>
+  <li>Markdown 文件允许以以下形式插入图片:
+<code class="language-plaintext highlighter-rouge">![img-alt](img-src "img-title")</code>.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">   预览图片
+   </code></pre></figure>
+
+<p><img src="http://localhost:4000/images/green.jpg" alt="img.alt" title="img.title" /></p>
+
+<h3 id="三语法">三、语法<br /></h3>
+
+<ol>
+  <li>
+    <p>Markdown 文件中的三种定义变量方式: <code class="language-plaintext highlighter-rouge">{ {变量} }</code> <code class="language-plaintext highlighter-rouge">{ %语句% }</code> <code class="language-plaintext highlighter-rouge">[链接]</code>;</p>
+  </li>
+  <li>
+    <p>Markdown 文件允许在 YAML 头信息中自定义页面变量: 如 <code class="language-plaintext highlighter-rouge">page.subtitle: 副标题</code>;</p>
+  </li>
+  <li>
+    <p>Markdown 文件允许使用 for 循环.</p>
+  </li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+  <span class="k">for</span> <span class="n">post</span> <span class="k">in</span> <span class="n">site</span><span class="p">.</span><span class="nf">posts</span>
+    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">"{post.url}"</span><span class="o">&gt;</span><span class="n">post</span><span class="p">.</span><span class="nf">title</span><span class="o">&lt;</span><span class="sr">/a&gt;
+    &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="n">endfor</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;
+预览循环结果</span></code></pre></figure>
+
+<ul>
+  
+    <li>
+      <a href="/2020/12/23/Markdown%E6%96%87%E4%BB%B6%E8%A7%84%E8%8C%83/">Markdown 文件规范</a>
+    </li>
+  
+</ul>
+
+<h3 id="四jekyll-数据">四、jekyll 数据<br /></h3>
+
+<ol>
+  <li>jekyll 支持从位于_data 的 yaml,json,csv 文件中加载数据</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+<span class="k">for</span> <span class="n">member</span> <span class="k">in</span> <span class="n">site</span><span class="p">.</span><span class="nf">data</span><span class="p">.</span><span class="nf">members</span>
+  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">"member.path"</span><span class="o">&gt;</span>
+      <span class="n">member</span><span class="p">.</span><span class="nf">name</span>
+    <span class="o">&lt;</span><span class="sr">/a&gt;
+  &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="n">endfor</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;
+预览获取的数据结果</span></code></pre></figure>
+
+<ul>
+
+</ul>
+
+:ET
