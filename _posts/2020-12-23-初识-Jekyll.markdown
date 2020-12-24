@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "初始 Jekyll"
+title: "初识 Jekyll"
 subtitle: "副标题"
 date: 2020-12-23 18:50:06 +0800
 # image:  lang.jpg

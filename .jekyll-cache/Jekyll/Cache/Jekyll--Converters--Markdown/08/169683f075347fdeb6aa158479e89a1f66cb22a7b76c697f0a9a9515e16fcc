@@ -1,0 +1,124 @@
+I"j<h2 id="一块级元素">一、块级元素</h2>
+
+<h3 id="1段落和换行">1、段落和换行</h3>
+<ul>
+  <li>md 文件中，如果你需要换行，可以在一个段落之后加上一个或多个空行（即使空行中包含了空格或者空白字符也被认为是空行）；</li>
+  <li>如果你需要添加一个<code class="language-plaintext highlighter-rouge">&lt;br /&gt;</code>标签，则可以在行尾加上两个及以上的空格，然后换行（这种方式不会打断有序列表，上一种方式则相反）；</li>
+</ul>
+
+<hr />
+<h3 id="2标题">2、标题</h3>
+<p>每行开头使用1~6个<code class="language-plaintext highlighter-rouge">#</code>字符来对应1~6级标题（h1~h6）；</p>
+
+<hr />
+
+<h3 id="3块引用">3、块引用</h3>
+<ul>
+  <li>最好在每一行行首放一个<code class="language-plaintext highlighter-rouge">&gt;</code>字符，或者只在每一个需要强制换行的段落的首行前面加上<code class="language-plaintext highlighter-rouge">&gt;</code>（使用 vscode 格式化 md 文档时，第二种方式会自动转换为第一种）；</li>
+  <li>块引用可以嵌套使用；</li>
+  <li>块引用可以包含 Markdown 元素，包括标题、列表和代码块；</li>
+</ul>
+
+<hr />
+
+<h3 id="4列表">4、列表</h3>
+<ol>
+  <li>无序列表在行首使用星号<code class="language-plaintext highlighter-rouge">*</code>或加号<code class="language-plaintext highlighter-rouge">+</code>或连字符<code class="language-plaintext highlighter-rouge">-</code>作为列表标记；</li>
+  <li>有序列表在行首使用数字以及英文句号组合<code class="language-plaintext highlighter-rouge">1.</code>（number-period-space）作为列表标记；</li>
+  <li>有序列表的列表标记，对于最终生成 HTML 是没有影响的，也就是说即便使用错误的列表序号，最终生成的列表仍然会以序号 1 开始，依次排序（所以在有序列表里，你哪怕写个957、369，最终在 HTML 上的体现也依然是123）；</li>
+  <li>以防在无意中触发有序列表，可以在数字后添加转义符号：<code class="language-plaintext highlighter-rouge">1\. </code>；</li>
+</ol>
+
+<hr />
+
+<h3 id="5代码块">5、代码块</h3>
+<ul>
+  <li>在 md 中插入代码块，只需要每行开始缩进4个空格或一个水平制表符（这一行之前需要一行以上的空行，以及一行正文），代码块就会被<code class="language-plaintext highlighter-rouge">&lt;pre&gt;</code>和<code class="language-plaintext highlighter-rouge">&lt;code&gt;</code>标签包裹，原样呈现其中内容；</li>
+  <li>代码块中，<code class="language-plaintext highlighter-rouge">&lt;</code>、<code class="language-plaintext highlighter-rouge">&gt;</code>和<code class="language-plaintext highlighter-rouge">&amp;</code>会自动转换为HTML字符实体；</li>
+  <li>md 的语法会在代码块中失效；</li>
+</ul>
+
+<p>一行正文：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const tempVal = '1a&lt;&gt;&amp;';
+console.log(tempVal, '打印值');
+* 1. -（md 语法在代码块中失效）
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="6水平线">6、水平线</h3>
+<p>在 md 中<code class="language-plaintext highlighter-rouge">---</code>或<code class="language-plaintext highlighter-rouge">***</code>（三个以上连字符或星号）就会在 HTML 中生成一个<code class="language-plaintext highlighter-rouge">&lt;hr /&gt;</code>，常用作分割线。</p>
+
+<hr />
+
+<h2 id="二内联元素">二、内联元素</h2>
+
+<h3 id="1链接">1、链接</h3>
+<p>md 支持两种形式的链接，内联、引用。</p>
+
+<ul>
+  <li>内联链接只需要在链接文本后面放上Url链接即可，还可以放一个可选的链接标题，如：
+这是一个内联<a href="http://baidu.com" title="title">链接</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">这是一个内联<span class="p">[</span><span class="nv">链接</span><span class="p">](</span><span class="sx">http://baidu.com</span> <span class="nn">"title"</span><span class="p">)</span>。</code></pre></figure>
+
+<ul>
+  <li>如果是引用相同服务器下的本地资源，还可以用相对路径，如： <a href="/about">关于我</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="p">[</span><span class="nv">关于我</span><span class="p">](</span><span class="sx">/about</span><span class="p">)</span>。
+<span class="gh">#=&gt; 注意：内联和引用链接都可以使用相对路径；</span></code></pre></figure>
+
+<ul>
+  <li>引用链接是在链接文本的后面放上一个链接变量名称，可以在文件任意位置（一般跟在引用位置之后）定义一个链接变量名称作为Url链接，如：
+这是一个引用<a href="http://baidu.com" title="title">链接</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">这是一个引用<span class="p">[</span><span class="nv">链接</span><span class="p">][</span><span class="ss">link temp</span><span class="p">]</span>。
+<span class="p">[</span><span class="ss">link temp</span><span class="p">]:</span> <span class="sx">http://baidu.com</span> <span class="nn">"title"</span>
+<span class="gh">#=&gt; 注意： 其中，URL 可以用尖括号包围，标题可以用双引号、圆括号包围。</span>
+<span class="gh">#=&gt; 链接变量名称可以包含字母、数字、空格和标点符号，不区分大小写。</span></code></pre></figure>
+
+<ul>
+  <li>引用链接支持更简便的用法，即省略链接变量名称，将链接文本作为链接变量名称。如：
+这是一个省略了链接变量名称的<a href="http://baidu.com">链接</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">这是一个省略了链接变量名称的<span class="p">[</span><span class="nv">链接</span><span class="p">][]</span>。
+<span class="p">[</span><span class="ss">链接</span><span class="p">]:</span> <span class="sx">http://baidu.com</span></code></pre></figure>
+
+<hr />
+
+<h3 id="2强调">2、强调</h3>
+<ul>
+  <li>在 md 中，被<code class="language-plaintext highlighter-rouge">*</code>或<code class="language-plaintext highlighter-rouge">_</code>符号包裹的文本将被<code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>标签包裹，展示为<em>斜体</em>，被<code class="language-plaintext highlighter-rouge">**</code>或<code class="language-plaintext highlighter-rouge">__</code>符号包裹的文本将被<code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>标签包裹，展示为<strong>粗体</strong>。如：</li>
+</ul>
+
+<p>单个符号包裹展示的是<em>斜体</em>，两个符号包裹的是<strong>粗体</strong>。</p>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">单个符号包裹展示的是<span class="ge">*斜体*</span>，两个符号包裹的是<span class="gs">**粗体**</span>。</code></pre></figure>
+
+<ul>
+  <li>以防在无意中触发强调，可以在<code class="language-plaintext highlighter-rouge">*</code>或<code class="language-plaintext highlighter-rouge">_</code>前添加转义符号：<code class="language-plaintext highlighter-rouge">\*</code>，如：</li>
+</ul>
+
+<p>正常展示文本中的*强调*号。</p>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">正常展示文本中的<span class="se">\*</span>强调<span class="se">\*</span>号。</code></pre></figure>
+
+<hr />
+
+<h3 id="3代码">3、代码</h3>
+
+<ul>
+  <li>在 md 中展示代码片段，需要使用重音符号<code class="language-plaintext highlighter-rouge">(`)</code>，</li>
+</ul>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">printf()</code> function.</p>
+
+<p><code class="language-plaintext highlighter-rouge">There is a literal backtick (`) here.</code></p>
+
+<hr />
+:ET
