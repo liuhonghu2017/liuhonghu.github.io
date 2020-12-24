@@ -9,11 +9,11 @@
   }
 
   @media only screen and (max-width: $mobile) {
-    padding: 40px 0;
+    padding: 20px 0;
 
     .page-title {
-      font-size: 47px;
-      line-height: 53px;
+      font-size: 28px;
+      line-height: 1.5;
     }
   }
 }
@@ -43,7 +43,7 @@
   }
 
   @media only screen and (max-width: $tablet) {
-    margin: 40px auto;
+    margin: 10px auto;
   }
 }
 
