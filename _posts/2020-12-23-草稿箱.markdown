@@ -4,7 +4,27 @@ title: "草稿"
 subtitle: "副标题"
 date: 2020-12-23 14:35:06 +0800
 tags: Jekyll
+image:  俯瞰海滩.jpg
 author: 阿浪
 ---
 
 ### 啥也不是 
+
+hello
+### 1. a 标签
+
+[这是一个 a 标签][link-a];
+{% highlight md %}
+[这是一个 a 标签][link-a];
+[link-a]: https://baidu.com (自定义链接变量必须放在文件尾部)
+{% endhighlight %}
+
+---### 1. a 标签
+
+[这是一个 a 标签][link-a];
+{% highlight md %}
+[这是一个 a 标签][link-a];
+[link-a]: https://baidu.com (自定义链接变量必须放在文件尾部)
+{% endhighlight %}
+
+---

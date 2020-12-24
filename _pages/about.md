@@ -2,6 +2,6 @@
 layout: page
 title: 关于
 permalink: /about/
-image: 火花与你.jpg
+image: 水天光辉.jpg
 ---
 
