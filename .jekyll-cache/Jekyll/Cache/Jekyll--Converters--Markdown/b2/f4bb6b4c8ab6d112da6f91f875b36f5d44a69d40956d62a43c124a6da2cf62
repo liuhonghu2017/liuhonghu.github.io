@@ -1,0 +1,28 @@
+I"<ol>
+  <li>段落和换行
+    <ul>
+      <li>md 文件中, 如果你需要换行, 可以在一个段落之后加上一个或多个空行(即使空行中包含了空格或者空白字符);</li>
+      <li>如果你需要添加一个<code class="language-plaintext highlighter-rouge">&lt;br /&gt;</code>标签, 则可以在行尾加上两个及以上的空格, 然后换行(这种方式不会打断有序列表, 上一种方式则相反);</li>
+    </ul>
+  </li>
+  <li>
+    <p>标题<br />
+每行开头使用 1-6 个井号来对应 1-6 级标题;</p>
+  </li>
+  <li>块引用
+    <ul>
+      <li>可以在每一行行首放一个<code class="language-plaintext highlighter-rouge">&gt;</code>, 或者只在每一个需要强制换行的段落的首行前面加上<code class="language-plaintext highlighter-rouge">&gt;</code>(使用 vscode 格式化 md 文档时, 第二种方式会自动转换为第一种);</li>
+      <li>块引用可以嵌套使用;</li>
+      <li>块引用可以包含 Markdown 元素, 包括标题, 列表, 和代码块;</li>
+    </ul>
+  </li>
+  <li>列表
+    <ul>
+      <li>无序列表在行首使用<code class="language-plaintext highlighter-rouge">星号*</code>或<code class="language-plaintext highlighter-rouge">加号+</code>或<code class="language-plaintext highlighter-rouge">连字符-</code>作为列表标记;</li>
+      <li>有序列表在行首使用数字以及句号组合<code class="language-plaintext highlighter-rouge">1.</code>作为列表标记;</li>
+      <li>有序列表的列表标记, 对于最终生成 HTML 是没有影响的, 也就是说即便使用错误的列表序号, 最终生成的列表仍然会以序号 1 开始, 依次排序.(所以在有序列表里, 你哪怕写个957,369, 最终在 HTML 上的体现也依然是123);</li>
+    </ul>
+  </li>
+</ol>
+
+:ET

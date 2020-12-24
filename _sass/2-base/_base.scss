@@ -125,3 +125,14 @@ hr {
   border: 0;
   background: $light-gray;
 }
+
+.highlighter-rouge {
+  background-color: #309f8a;
+  color: #FFF;
+  padding: 2px 5px;
+  margin: 0 5px;
+  border-radius: 3px;
+  .highlight {
+    background-color: transparent;
+  }
+}
