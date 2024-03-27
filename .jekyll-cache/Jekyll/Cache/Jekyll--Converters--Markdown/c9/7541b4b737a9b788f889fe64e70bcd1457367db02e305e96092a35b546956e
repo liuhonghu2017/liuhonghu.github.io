@@ -1,4 +1,4 @@
-I"�6<h2 id="一块级元素">一、块级元素</h2>
+I"�6<h2 id="一块级元素">一、块级元素</h2>
 
 <h3 id="1-段落和换行">1. 段落和换行</h3>
 <ul>
@@ -48,7 +48,7 @@ console.log(tempVal, '打印值');
 <hr />
 
 <h3 id="6-水平线">6. 水平线</h3>
-<p>在 md 中插入一条水平线：单行填入<code class="language-plaintext highlighter-rouge">---</code>或<code class="language-plaintext highlighter-rouge">***</code>（三个以上连字符或星号）就会在 HTML 中生成一个<code class="language-plaintext highlighter-rouge">&lt;hr /&gt;</code>，常用作分割线<sup id="fnref:divider" role="doc-noteref"><a href="#fn:divider" class="footnote">1</a></sup>。</p>
+<p>在 md 中插入一条水平线：单行填入<code class="language-plaintext highlighter-rouge">---</code>或<code class="language-plaintext highlighter-rouge">***</code>（三个以上连字符或星号）就会在 HTML 中生成一个<code class="language-plaintext highlighter-rouge">&lt;hr /&gt;</code>，常用作分割线<sup id="fnref:divider" role="doc-noteref"><a href="#fn:divider" class="footnote" rel="footnote">1</a></sup>。</p>
 
 <hr />
 
@@ -236,7 +236,7 @@ _   下划线
 <h3 id="4-脚注">4. 脚注</h3>
 
 <ul>
-  <li>在右上角添加一个脚注标记<sup id="fnref:zhushi2" role="doc-noteref"><a href="#fn:zhushi2" class="footnote">2</a></sup>，点击后会跳转至页尾相应位置展示详细注释。</li>
+  <li>在右上角添加一个脚注标记<sup id="fnref:zhushi2" role="doc-noteref"><a href="#fn:zhushi2" class="footnote" rel="footnote">2</a></sup>，点击后会跳转至页尾相应位置展示详细注释。</li>
 </ul>
 
 <hr />
