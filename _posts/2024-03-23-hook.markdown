@@ -1,0 +1,231 @@
+---
+layout: post
+title: "hook"
+date: 2024-03-28 12:26 +0800
+tags: js
+---
+
+# hook
+
+## 优缺点
+
+- 优点:
+  1. 写法更加简洁;
+  2. 更容易拆分组件, 复用代码;
+  3. 不用再去考虑 this 的指向问题;
+- 缺点:
+  1. useEffect 是响应式的, 当某个依赖项变化时它才会被调用。你必须去理解它的调用时机、调用时的状态老旧问题, 这不直观, 也难以维护。有时, useEffect 会发生比你预期更多的调用次数
+     解决方案: 不要在 useEffect 里面写太多的依赖项, 划分这些依赖项成多个单一功能的 useEffect。其实这点是遵循了软件设计的“单一职责模式”
+  2. 状态不同步; 解决方案: 手动传参 或使用 useRef
+
+## hook 为什么不能在 if 判断和循环语句中？
+
+    类组件的状态是以对象形式储存的, 每个状态都有一个key和value相对应,但是在函数式组件中, useState方法只接受了状态的初始值作为参数, 并没有key, 所以, 函数式组件的状态不能以对象的形式存储, 只能以链表的形式存储,需要保持顺序, 这样才能使每次渲染的序列对得上.而函数式组件每次渲染都会重新生成一个状态序列, 如果在 if 里调用, 就可能导致某次渲染的时候状态序列有缺失, 从而出现异常。
+
+## useState
+
+    useState 可以让我们在函数组件中使用 state 状态
+
+与类组件中 state 的区别:
+
+- 声明：state 直接在 useState 中声明, 类组件的 state 在 constructor 构造函数中设置
+- 读取：state 可以直接使用变量, 类组件需要 this.state.xx 获取
+- 更新：setXx, 类组件 this.setState({xx: ..})
+  与类组件中 state 相比优点: 更加简洁, 减少了 this 指向不明确的情况
+
+useState 中的 setState 函数, 可以接受一个回调函数作为参数, 这个回调函数会接受当前 state 的值作为参数, 然后返回一个新的 state 值。
+
+```js
+// useState 闭包陷阱
+function Counter() {
+	const [count, setCount] = useState(0);
+	const handleClick = () => {
+		// handleClick 函数内可以访问 Counter 函数中定义的 count 和 setCount, handleClick 函数形成了一个闭包, 而闭包会缓存 count 的值
+		// 就导致每次 setTimeout 中拿到的 count 都是缓存过的值, 不是最新的值
+		// 解决方案是在 setCount 中传入一个回调函数, 回调函数中的 currentCount 变量是函数作用域内的局部变量, 不会受到外部变量的影响, 就可以拿到最新的 count
+		setTimeout(() => {
+			setCount(count + 1);
+			// setState 函数, 可以接受一个回调函数作为参数
+			setCount((currentCount) => currentCount + 1);
+		}, 1000);
+	};
+	const handleReset = () => {
+		setCount(0);
+	};
+	return (
+		<div>
+			<p>Count: {count}</p>
+			<button onClick={handleClick}>Increment</button>
+		</div>
+	);
+}
+// useEffect 也存在闭包陷阱, 可以通过传入依赖项解决
+```
+
+## useEffect
+
+    useEffect 可以让我们在函数组件中进行一些带有副作用的操作, 可以实现类组件中生命周期的功能
+    componentDidMount, componentDidUpdate, componentWillUnMount
+    可以在函数中返回一个函数,在其中清除副作用;
+
+特性: 依赖项变化时才执行, 好处是可以减少不必要的代码开销, 坏处是不易管理依赖项, 建议遵循单一职责原则, 以职责划分多个 useEffect 函数
+
+## useContext
+
+    组件通信(非关系组件的通信,祥见 react.md), 用来处理多层级传递数据的方式, 减少组件嵌套
+
+```jsx
+// 使用 createContext 建立一个 context, 并导出
+import { createContext } from "react";
+const MyContext = createContext();
+export default MyContext;
+
+// 传递数据组件:
+import MyContext from './MyContext';
+
+return (
+    // 传递数据组件里使用 Provider 包裹着子组件, 并且在用value属性来传递数据
+    <MyContext.Provider value={value}>
+        <B />
+    </MyContext.Provider>
+);
+
+// 获取数据组件:
+// 接受数据的组件导入定义的 context 使用 Consumer 来接收
+return (
+<>
+   <MyContext.Consumer>
+     {(value) => <span>{value}</span>}
+   </MyContext.Consumer>
+    {/* 如果是多个 context, 需要嵌套使用 */}
+    <MyContext.Consumer>
+     {(value) => (
+       <>
+         <span>{value}</span>
+         <MyContext2.Consumer>
+           {(value2) => <span>{value2}</span>}
+         </MyContext2.Consumer>
+       </>
+     )}
+   </MyContext.Consumer>
+</>
+);
+export default B;
+
+// 为避免嵌套使用, 可以通过 useContext 来重新获取值
+const value = useContext(MyContext);
+const value2 = useContext(MyContext2);
+return (
+    <>
+        <span>{value}</span>
+        <span>{value2}</span>
+    </>
+);
+```
+
+## useRef
+
+    1. useRef 可以挂载在原生元素上来获取其DOM对象本身;
+
+```jsx
+const inputRef = useRef(null);
+function handleClick() {
+	inputRef.current.focus();
+}
+<input ref={inputRef} />;
+```
+
+    2. 可用于设置一个可变的引用值, 不随组件渲变化。与 useState 不同, useRef 返回的引用对象在组件重新渲染时保持不变, 设置引用值也不会触发组件的重新渲染。
+
+## useMemo 和 React.memo 的区别
+
+1.  useMemo **缓存计算结果**
+
+    - 作用: 缓存计算结果, 避免在每次渲染时都进行复杂的计算和重新创建对象
+    - 使用场景: 消耗量大的运算、递归之类的
+
+    ```js
+    const res = useMemo(() => {
+    	return 依赖项相关计算;
+    }, [依赖项]);
+    ```
+
+        - useMemo 也可以缓存组件
+
+    ```jsx
+    const SlowComponentMemo = memo(SlowComponent);
+
+    function Component() {
+    	return <SlowComponentMemo />;
+    }
+
+    // 或者
+    function Component() {
+    	const slowComponentNode = useMemo(() => {
+    		return <SlowComponent />;
+    	}, []);
+    	return slowComponentNode;
+    }
+    ```
+
+2.  React.memo **缓存组件**
+    react 组件的默认渲染机制是, 只要父组件重新渲染, 子组件会跟着渲染
+
+    - 作用: 用 **memo** 进行缓存, 允许组件在 **props** 没有改变的情况下跳过渲染
+    - 原理: 使用 **memo** 缓存组件之后, React 会对此组件的每一个 props 使用 **Object.is()** 比较新值老值, 所有 props 都返回 true 说明没有 props 更新, 则不会重新渲染
+
+    ```js
+    const MemoComponent = memo(fucntion SomeComponent(props) {
+    // …
+    })
+    ```
+
+    - 由于 **memo** 比较 props 新老数值的原理是利用 **Object.is()**,就会出现一个问题:
+      Object.is() 在判断复杂类型时, 会根据引用进行判断,而复杂类型的数据, 在函数每次执行时都会生成一个新的引用, 所以相同的数组会被判断成 false, 也就是说 props 没有变化的情况还是触发了组件的更新
+    - 解决方案:
+      1. 对象或数组 通过 **useMemo** 缓存 -->
+         将对象或数组用 **useMemo** 计算属性来缓存(依赖项为**[]**), 这样每次父组件更新时复杂类型的数据的依赖值没变, 则会直接使用缓存, 不会重新生成新的引用
+      2. 函数 通过 **useCallback** 缓存
+
+## useCallback 缓存函数
+
+    useCallback 可以缓存函数, 避免每次渲染时重新创建函数;
+
+```jsx
+const handleClick = useCallback(() => {
+	console.log("依赖项 count 变化");
+}, [count]);
+```
+
+## useSelector
+
+在组件多次重新渲染时, 缓存函数
+
+## useReducer
+
+    跟 react-redux 的使用方式一样, 算是提供一个简易的 Redux 版本, 用来管理相对复杂的状态数据
+
+```js
+// 定义 reducer 函数
+const reducer = (state, action) => {
+	// 根据不同的 action.type 执行不同的操作并返回新的 state
+	switch (action.type) {
+		case "INC":
+			return state + 1;
+		case "DEC":
+			return state - 1;
+		default:
+			return state;
+	}
+};
+// 在组件中调用 useReducer ,传入 reducer 函数和状态初始值
+const [state, dispatch] = useReducer(reducer, 0);
+// 通过 dispatch 分派一个 action 对象
+dispatch({ type: "INC" });
+```
+
+## ahooks 库
+
+1. useRequest 接口
+2. useControllableValue 父子组件数据共享
+3. useLocalStorageState 简易数据流

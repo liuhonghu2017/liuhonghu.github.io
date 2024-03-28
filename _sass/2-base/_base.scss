@@ -70,12 +70,16 @@ h6 {
 }
 
 blockquote {
-  margin: 30px -100px;
-  font-size: 28px;
-  line-height: 45px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 2;
   letter-spacing: 0.5px;
-  font-style: normal;
-  text-align: center;
+  font-style: normal; 
+  background: #f8f8f8;
+
+  p {
+    margin: 0;
+  }
 
   @media only screen and (max-width: $tablet) {
     margin: 30px 0;

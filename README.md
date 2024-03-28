@@ -1,3 +1,2 @@
-Jekyll Theme: [Zolan][link-a];
-
-[link-a]: http://artemsheludko.com/zolan/
+# lhhu.github.io
+个人博客

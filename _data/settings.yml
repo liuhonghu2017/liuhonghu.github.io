@@ -1,18 +1,17 @@
+---
 #-------------------------------
 # General Site Settings
-title: 是阿浪呀
+title: 鸿鹄的博客
 logo: logo.svg
 description: 所思有所记
-
 
 #-------------------------------
 # Author Settings
 author:
-  name: 阿浪
+  name: 鸿鹄
   image: 水天光辉.jpg
-  say-hello: 我是阿浪，祝你<strong>快乐</strong>~
-  bio: 且随疾风前行，身后亦须留心。
-
+  say-hello: 工作, 学习, 记录
+  # bio: 且随疾风前行，身后亦须留心。
 
 #-------------------------------
 # Contact links
@@ -23,22 +22,18 @@ instagram: https://instagram.com/ # Add your Instagram handle
 pinterest: https://pinterest.com/ # Add your Pinterest handle
 github: https://pinterest.com/ # Add your Pinterest handle
 
-
 #-------------------------------
 # Comment Section (Disqus)
 disqus-identifier: mr-alang # add your shortname for Disqus Comment. For example mr-brown
-
 
 #-------------------------------
 # Instagram Feed
 instafeed: # To enable the instafeed, use the value true. To turn off use the value false.
 instagram-profile: artemsheludko_ # Add instagram username
 
-
 #-------------------------------
 # Google Analytics
 google-analytics: # Add your identifier. For example UA-99631805-1.
-
 
 #-------------------------------
 # Newsletter
